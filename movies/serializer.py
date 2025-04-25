@@ -12,7 +12,7 @@ class ActorSerializer(serializers.ModelSerializer):
     class MovieSerializer(serializers.ModelSerializer):
         class Meta:
             model = Movie
-            fields = ('title')
+            fields = ('title',)
 
     movies = MovieSerializer(many=True, read_only=True)
 
@@ -36,7 +36,7 @@ class MovieSerializer(serializers.ModelSerializer):
     class ReviewListSerializer(serializers.ModelSerializer):
         class Meta:
             model = Review
-            fields = ('title', 'content')
+            fields = ('title', 'content',)
     actors = ActorSerializer(many=True, read_only=True)
     review_set = ReviewListSerializer(many=True, read_only=True)
 
