@@ -48,7 +48,11 @@ def review_detail(request, review_pk):
     if request.method == 'GET':
         pass
 
-    elif request.
+    elif request.method == 'PUT':
+        pass
+
+    elif request.method == 'DELETE':
+        pass
 
 
 
