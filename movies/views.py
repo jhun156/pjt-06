@@ -1,30 +1,57 @@
-from django.shortcuts import render
+from django.shortcuts import get_list_or_404, get_object_or_404
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from rest_framework import status
+from .models import Actor, Movie, Review
+from .serializer import ActorListSerializer, ActorSerializer
+from .serializer import MovieListSerializer, MovieSerializer
+from .serializer import ReviewListSerializer, ReviewSerializeer
 
 # Create your views here.
 
-# GET
+api_view(['GET'])
 def actor_list(request):
-    pass
+    actors = get_list_or_404(Actor)
+    serializer = ActorListSerializer(actors, many=True)
+    return Response(serializer.data)
 
-# GET
+
+api_view(['GET'])
 def actor_detail(request, actor_pk):
-    pass
+    actor = get_object_or_404(Actor, pk=actor_pk)
+    serializer = ActorSerializer(actor)
+    return Response(serializer.data)
 
-# GET
+
+api_view(['GET'])
 def movie_list(request):
-    pass
+    movies = get_list_or_404(Movie)
+    serializer = MovieListSerializer(movies, many=True)
+    return Response(serializer.data)
 
-# GET
+api_view(['GET'])
 def movie_detail(request, movie_pk):
-    pass
+    movie = get_object_or_404(Movie, pk=movie_pk)
+    serializer = MovieSerializer(movie)
+    return Response(serializer.data)
 
-# GET
+api_view(['GET'])
 def review_list(request):
-    pass
+    reviews = get_list_or_404(Review)
+    serializer = ReviewListSerializer(reviews, many=True)
+    return Response(serializer.data)
 
-# GET PUT DELETE
+api_view(['GET','PUT','DELETE'])
 def review_detail(request, review_pk):
-    pass
+    review = get_object_or_404(Review, pk=review_pk)
+
+    if request.method == 'GET':
+        pass
+
+    elif request.
+
+
+
 
 # POST
 def create_review(request, movie_pk):
